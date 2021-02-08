@@ -12,3 +12,13 @@
 <%= link_to "delete" , game_path(@game), method: 'delete' %>
 
     <%= link_to "edit post" , edit_game_path(@game), method: 'edit' %>
+<br></br>
+<br></br>
+<h5>Leave a Comment</h5>
+<p>Comments:</p>
+<%= form_for(@comment.current_user) do |f| %>
+<%= f.label  %>
+<%= f.text_area :comment %>
+
+<%= f.submit %>
+<% end %>
