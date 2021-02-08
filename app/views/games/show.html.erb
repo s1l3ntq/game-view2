@@ -1,0 +1,14 @@
+<h1>
+    <%= @game.game_name %>
+</h1>
+
+<h2>demo: <%= @game.demo %>
+</h2>
+<h3>description: <%= @game.description %>
+</h3>
+<h4>Platform: <%= @game.platform%>
+</h4>
+
+<%= link_to "delete" , game_path(@game), method: 'delete' %>
+
+    <%= link_to "edit post" , edit_game_path(@game), method: 'edit' %>
