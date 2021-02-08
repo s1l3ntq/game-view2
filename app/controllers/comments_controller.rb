@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
 
-def create 
+    def new
+        @comment = Comment.new
+    end
+
+    def create 
     @game = Game.find(params[:id])
     @comment = @game.comments.new(params[:comment]).permit(:username, :comment)
     if @comment.save
