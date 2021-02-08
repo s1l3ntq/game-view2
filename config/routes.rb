@@ -8,7 +8,12 @@ get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 delete '/logout' => 'sessions#destroy'
 
-resources :games
+
+resources :users do
+  resources :games
+end
+resources :games 
+
 resources :comments
 resources :users
 
