@@ -2,11 +2,13 @@ class CommentsController < ApplicationController
 
     def new
         @comment = Comment.new
+        
     end
 
     def create 
     @game = Game.find(params[:id])
-    @comment = @game.comments.new(params[:comment]).permit(:username, :comment)
+    @comment = @game.comments.new(params[:comment]).permit(:comment)
+    @comment.user_id = current_user
     if @comment.save
     redirect_to game_path(@game)
     else
@@ -16,21 +18,17 @@ class CommentsController < ApplicationController
 
 end
 
-def edit
+    def edit
 
-end
-def update
+    end
+    def update
 
-end
+    end
 
-def destroy
+    def destroy
 
-end
+    end
 
-private
 
-def current_user
-    @current_user ||=  User.find(session[:user_id])
-end
 
 end

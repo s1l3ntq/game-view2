@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
 
 def index
-    @games = Game.all
+    @games = Game.all.reverse
     
 end
 
@@ -12,12 +12,14 @@ end
 
 def new
     @game = Game.new
+
 end
 
 def create
     @game = Game.new(game_params)
     
-    if @game.save
+    if @game.user_id = session[:user_id]
+       @game.save
         redirect_to games_path
     else
         render :new
@@ -39,7 +41,7 @@ def update
 
     def destroy 
         @game = Game.find(prams[:id])
-        @game.destroy
+        @game.delete
         redirect_to games_path
     end
 

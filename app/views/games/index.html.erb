@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
 <h1>GameFeed</h1>
-
+<a>  <%= link_to "Logout", logout_path, method: 'delete' %></a>
 <div class="card mb-3">
 <video class="card-img-top" loop="true" autoplay="autoplay" muted>
 <source src="https://i.imgur.com/QhwCEgE.mp4" type="video/mp4">
@@ -23,7 +23,7 @@
 </h2>
 
 <h3>
-    <%= link_to "Create Post" , new_game_path(@game), method: 'create' %>
+    <%= link_to "Create Game Post" , new_game_path(@game), method: 'create' %>
 </h3>
 
 </div>

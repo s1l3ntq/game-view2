@@ -16,6 +16,7 @@ resources :games
 
 resources :comments
 resources :users
+resources :sessions
 
 
 end
