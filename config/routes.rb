@@ -12,7 +12,7 @@ root to: 'sessions#welcome'
   
 
   resources :users do
-    resources :games, only: [:show]
+    resources :games #, only: [:show]
   end
 
   resources :sessions
