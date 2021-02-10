@@ -31,9 +31,9 @@ end
 
 def edit
     if logged_in?
-    @user = self.current_user
+    #@user = self.current_user
     @game = Game.find(params[:id])
-    redirect_to edit_game_path
+    #redirect_to edit_game_path
     end
 end
 def update
