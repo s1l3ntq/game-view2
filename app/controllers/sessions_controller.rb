@@ -8,17 +8,22 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = User.find_by(username: params[:username])
-            if user && user.authenticate(params[:password])
-                session[:user_id] = user.id
-                redirect_to user_path(user)
-            else 
+        @user = User.find_by(params[:username])
+        if @user && @user.authenticate(params[:password])
+            #byebug
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+        else
+            #byebug
                 redirect_to '/login'
-            end
+
+        end
     end
 
+    
+
     def destroy
-        session.destroy(:user_id)
+        session.delete(:user_id)
         redirect_to '/login'
     end
 
@@ -27,6 +32,9 @@ class SessionsController < ApplicationController
 
 
 
-
+    private
+    def user_params
+     params.require(:user).permit(:username, :password)
+    end 
 
 end
