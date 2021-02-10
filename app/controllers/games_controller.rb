@@ -9,6 +9,7 @@ end
 def show    
     @game = Game.find(params[:id])
     @comment = Comment.new
+    #@comment = @game.comments
 end
 
 def new

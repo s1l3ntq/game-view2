@@ -14,8 +14,8 @@ class CommentsController < ApplicationController
         #@comment.user_id = session[user_id]
         #@comment.game_id = params[:game_id]
         if @comment.save
-            redirect_to game_comments_path(params[:game_id], @comment)
-
+            redirect_to game_comment_path(params[:game_id],@comment)
+            
     # @game = Game.find(params[:id])
     # @comment = @game.comments.new(params[:comment]).permit(:comment)
     # @comment.user_id = current_user
