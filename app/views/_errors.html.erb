@@ -1,0 +1,5 @@
+<% if mistake.errors%>
+    <% mistake.errors.full_message.each do |e| %>
+    <h1> <%= e%> </h1>
+        <% end %>
+    <%end%>

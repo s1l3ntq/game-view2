@@ -1,5 +1,5 @@
 <H1> Login</H1>
-
+<%=render partial: '/errors', locals: {mistake: @user}%>
 <%= form_tag('/users', method: :post) do %>
   <div>
     <%= label_tag(:username, "Username") %>

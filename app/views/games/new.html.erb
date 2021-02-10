@@ -1,24 +1,15 @@
-<h1>Create a Post</h1>
-<% if @game.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@game.errors.count, "error") %> prohibited this article from being saved:</h2>
+<h1>Create a Game to View</h1>
 
-    <ul>
+<%# <% if @game.errors.any? %>
+  <%#<div id="error_explanation">
+    <h2><%= pluralize(@game.errors.count, "error") %> <%#prohibited this article from being saved:</h2>
+
+    <%#<ul>
       <% @game.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
+        <%#<li><%= error.full_message %> <%#</li>
+      <%#<% end %>
+   <%# </ul>
   </div>
 <% end %>
 
-<%= form_for(@game) do |f| %>
-<%= f.label "name:" %>
-<%= f.text_field :name %>
-<%# <%= f.label "demo:" %>
-<%# <%= f.file_field :demo %>
-<%= f.label "description:" %>
-<%= f.text_field :description %>
-<%= f.label "platform:" %>
-<%= f.text_field :platform %>
-<%= f.submit %>
-<% end %>
+<%=render partial: 'form'%>

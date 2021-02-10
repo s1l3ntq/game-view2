@@ -10,9 +10,10 @@ root to: 'sessions#welcome'
   get '/logout', to: 'sessions#destroy'
 
   
+  resources :users
 
-  resources :users do
-    resources :games #, only: [:show]
+  resources :games do
+    resources :comments
   end
 
   resources :sessions
@@ -20,6 +21,7 @@ root to: 'sessions#welcome'
   resources :games 
   
   resources :comments
+  
   
   # resources :games do
   #   resources :comments

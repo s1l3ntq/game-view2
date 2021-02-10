@@ -1,0 +1,15 @@
+<% if @game.errors.any? %>
+    <%=render partial: '/errors', locals: {mistake: @game}%>
+<% end %>
+
+<%= form_for(@game) do |f| %>
+<%= f.label "name:" %>
+<%= f.text_field :name %>
+<%# <%= f.label "demo:" %>
+<%# <%= f.file_field :demo %>
+<%= f.label "description:" %>
+<%= f.text_field :description %>
+<%= f.label "platform:" %>
+<%= f.text_field :platform %>
+<%= f.submit %>
+<% end %>
