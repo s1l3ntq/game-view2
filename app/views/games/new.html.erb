@@ -13,3 +13,6 @@
 <% end %>
 
 <%=render partial: 'form'%>
+<%= form_with games: @game do |f|%>
+  <% f.file_field :demo %>
+  <% end %>

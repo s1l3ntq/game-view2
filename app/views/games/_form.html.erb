@@ -11,5 +11,9 @@
 <%= f.text_field :description %>
 <%= f.label "platform:" %>
 <%= f.text_field :platform %>
+
+    <%= form_with games: @game do |f|%>
+  <% f.file_field :demo %>
 <%= f.submit %>
+  <% end %>
 <% end %>

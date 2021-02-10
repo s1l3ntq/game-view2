@@ -1,12 +1,9 @@
 <div class="container-fluid">
 
 <h1>GameFeed</h1>
-<a>  <%= link_to "Logout", logout_path, method: :delete %></a>
 
-            
-       <% if logged_in?  %>
-            Welcome, <span> <%= current_user.username %></span>
-            <% end %>
+
+               
 
 <div class="card mb-3">
 <video class="card-img-top" loop="true" autoplay="autoplay" muted>
