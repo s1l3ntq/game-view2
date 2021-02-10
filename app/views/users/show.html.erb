@@ -1,9 +1,9 @@
-<h1><%=@user.username%></h1>
+<h1><%=current_user.username%></h1>
 
 <h2> My Games</h2>
 
 
- <% @user.games.each do |game|%>
+ <% current_user.games.each do |game|%>
         <%= link_to(game.game_name, user_game_path(user.id, game.id) ) %>
             <%= game.demo%>
                 <% end %>

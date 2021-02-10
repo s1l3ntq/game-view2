@@ -8,14 +8,13 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @user = User.find_by(params[:username])
-        if @user && @user.authenticate(params[:password])
-            #byebug
-            session[:user_id] = @user.id
-            redirect_to user_path(@user)
+        @user = User.new(user_params)
+        if @user.save
+                session[:user_id] = @user.id 
+                redirect_to user_path
         else
-            #byebug
-                redirect_to '/login'
+                @error = @user.errors.full_messages
+                render :signup
 
         end
     end
@@ -27,6 +26,18 @@ class SessionsController < ApplicationController
         redirect_to '/login'
     end
 
+    # def google
+    #     @user = User.find_or_create_by(username: auth["info"]["name"]) do |user| 
+    #         user.password =  SecureRandom.hex(10)
+    #     end 
+    #     if @user && @user.id
+    #         session[:user_id] = @user.id
+    #         redirect_to user_path 
+    #     else 
+    #         redirect_to "/login"
+    #     end 
+    # end 
+
 
 
 
@@ -36,5 +47,9 @@ class SessionsController < ApplicationController
     def user_params
      params.require(:user).permit(:username, :password)
     end 
+
+    # def auth
+    #     request.env['omniauth.auth']
+    # end
 
 end
