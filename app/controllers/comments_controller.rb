@@ -7,12 +7,14 @@ class CommentsController < ApplicationController
     end
     
 
-    def create 
-        @comment = Comment.new(params[:comment])
-        @comment.user_id = session[user_id]
-        @comment.game_id = params[:game_id]
+    def create
+        @game = Game.find(params[:game_id]) 
+        @comment = @game.comments.build(comments_params)
+        #@comment = Comment.new(params[:comment])
+        #@comment.user_id = session[user_id]
+        #@comment.game_id = params[:game_id]
         if @comment.save
-            redirect_to game_comment_path(params[:game_id], @comment)
+            redirect_to game_comments_path(params[:game_id], @comment)
 
     # @game = Game.find(params[:id])
     # @comment = @game.comments.new(params[:comment]).permit(:comment)
@@ -22,9 +24,7 @@ class CommentsController < ApplicationController
         else
             render :new
         end
-
-
-end
+    end
 
     def edit
 
@@ -36,7 +36,11 @@ end
     def destroy
 
     end
+    private
 
+    def comments_params
+        params.require(:comment).permit(:comment)   
+    end
 
 
 end

@@ -8,6 +8,7 @@ end
 
 def show    
     @game = Game.find(params[:id])
+    @comment = Comment.new
 end
 
 def new
@@ -18,7 +19,7 @@ end
 
 def create
     @game = Game.new(game_params)
-    byebug
+    #byebug
     
     if @game.user_id = session[:user_id]
        @game.save
