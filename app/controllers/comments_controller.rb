@@ -9,8 +9,8 @@ class CommentsController < ApplicationController
 
     def create
         @game = Game.find(params[:game_id]) 
+        @comment = Comment.new(params[:comment])
         @comment = @game.comments.create(params[:comment])
-        #@comment = Comment.new(params[:comment])
         #@comment.user_id = session[user_id]
         #@comment.game_id = params[:game_id]
         if @comment.save
@@ -38,9 +38,9 @@ class CommentsController < ApplicationController
     end
     private
 
-    # def comments_params
-    #     params.require(:comment).permit(:comment)   
-    # end
+    def comments_params
+        params.require(:comment).permit(:comment)   
+    end
 
 
 end
