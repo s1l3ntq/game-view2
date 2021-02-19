@@ -8,13 +8,13 @@ end
 
 def show    
     @game = Game.find(params[:id])
-    @comment = Comment.new
+    @comment = @game.comments.build
+    # @comment = Comment.new
     #@comment = @game.comments
 end
 
 def new
     @game = Game.new
-    @game.comments.build
 
 end
 
@@ -49,9 +49,13 @@ def update
     end
 
     def destroy 
-        @game = Game.find(prams[:id])
+        @game = Game.find(params[:id])
         @game.delete
         redirect_to games_path
+    end
+
+    def recent_games
+        @recent_games = Game.recent_games
     end
 
 private 

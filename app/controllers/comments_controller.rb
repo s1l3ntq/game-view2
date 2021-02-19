@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+    before_action :get_game
 
     def new
         @game =Game.find(params[:game_id])
@@ -6,16 +7,16 @@ class CommentsController < ApplicationController
         #(game_id:@game.id) associates right away.
     end
     
-
+    
     def create
-        @game = Game.find(params[:game_id]) 
-        @comment = Comment.new(params[:comment])
-        @comment = @game.comments.create(params[:comment])
+        @game = Game.find(comments_params[:game_id]) 
+        # @comment = Comment.new(params[:comment])
+        @comment = @game.comments.build(comments_params)
+        if @comment.save
         #@comment.user_id = session[user_id]
         #@comment.game_id = params[:game_id]
-        if @comment.save
-            redirect_to game_comment_path(params[:game_id],@comment)
-            
+        redirect_to game_path(@comment) #params[:game_id],@comment
+        
     # @game = Game.find(params[:id])
     # @comment = @game.comments.new(params[:comment]).permit(:comment)
     # @comment.user_id = current_user
@@ -39,7 +40,11 @@ class CommentsController < ApplicationController
     private
 
     def comments_params
-        params.require(:comment).permit(:comment)   
+        params.require(:comment).permit!  #(:comment) 
+    end
+
+    def get_game
+        @game =Game.find(params[:game_id])
     end
 
 

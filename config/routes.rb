@@ -8,8 +8,12 @@ root to: 'sessions#welcome'
   get '/login', to: 'users#new'
   #post '/login', to: 'users#create'
   get '/logout', to: 'sessions#destroy'
-
   
+  resources :games do 
+    collection do 
+      get 'recent_games', as: 'recent_games'
+    end
+  end
   resources :users
 
   resources :games do
