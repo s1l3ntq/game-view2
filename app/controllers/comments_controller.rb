@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     # if @comment.save
     # redirect_to game_path(@game)
         else
-            render :new
+            redirect_to game_path(@comment.game_id)
         end
     end
 
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
     private
 
     def comments_params
-        params.require(:comment).permit(:comment, :game_id, user_id, game_attributes:[:id]) 
+        params.require(:comment).permit(:comment, :game_id, :user_id, game_attributes:[:id]) 
     end
 
     # def get_game
