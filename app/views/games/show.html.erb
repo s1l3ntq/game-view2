@@ -18,7 +18,7 @@
 
 <% @game.comments.each do |g|%>
 <% user = User.find_by_id(g.user_id)%>
-<%=user - g.comment%><br>
+<%=g.comment%><br>
 <% end %>
 
  <%= form_for(@comment) do |f| %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  match '/auth/:provider/callback' => 'sessions#google', via: [:get,:post]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 root to: 'sessions#welcome'
 
@@ -9,7 +10,6 @@ root to: 'sessions#welcome'
   #post '/login', to: 'users#create'
   get '/logout', to: 'sessions#destroy'
 
-  match '/auth/:google_oauth2/callback', to: 'sessions#google', via: [:get,:post]
   
   resources :games do 
     collection do     

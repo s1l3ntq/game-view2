@@ -13,7 +13,7 @@ class Game < ApplicationRecord
 
 
     def self.recent_games
-		Game.where(:created_at => (Time.now - 10.days)..Time.now)
+		Game.where(:created_at => (Time.now - 11.days)..Time.now)
 	end
 
 

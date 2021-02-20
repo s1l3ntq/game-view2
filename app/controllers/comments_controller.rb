@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    # before_action :get_game
+    before_action :only_logged_in
 
     def new
         @game =Game.find(params[:game_id])

@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-
+    before_action :only_logged_in
 def index
     @games = Game.all.reverse
     
