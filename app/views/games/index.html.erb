@@ -1,23 +1,5 @@
-<div class="container-fluid">
 
 <h1>GameFeed</h1>
-
-
-               
-
-<div class="card mb-3">
-<video class="card-img-top" loop="true" autoplay="autoplay" muted>
-<source src="https://i.imgur.com/QhwCEgE.mp4" type="video/mp4">
-<track label="English" kind="project" srclang="en" default>
-</video>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-</div>
-
-
 <h2>
     <% @games.each do |game|%>
         <%= link_to(game.game_name, game_path(game.id) ) %>
@@ -28,5 +10,23 @@
 <h3>
     <%= link_to "Create Game Post" , new_game_path(@game), method: 'create' %>
 </h3>
+
+<%#<div class="container-fluid">
+
+
+
+               
+
+ <div class="card mb-3">
+<video class="card-img-top" loop="true" autoplay="autoplay" muted>
+<source src="https://i.imgur.com/QhwCEgE.mp4" type="video/mp4">
+<track label="English" kind="project" srclang="en" default>
+</video>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+</div>
 
 </div>

@@ -17,13 +17,15 @@
 <h5>Comments:</h5>
 
 <% @game.comments.each do |g|%>
-<%= g.comment%><br>
+<% user = User.find_by_id(g.user_id)%>
+<%=user.username - g.comment%><br>
 <% end %>
 
  <%= form_for(@comment) do |f| %>
  <%#<%= f.label "comments" %>
  <%= f.text_area :comment %>
- <%= f.hidden_field :game_id, :value=> 1%>
+ <%= f.hidden_field :game_id, :value=> @game.id%>
+ <%= f.hidden_field :user_id, :value=> current_user.id%>
  <%= f.submit "Leave Comment" %>
  <% end %> 
 
