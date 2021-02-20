@@ -22,11 +22,11 @@ def create
     @game = Game.new(game_params)
     #byebug
     
-    if @game.user_id = session[:user_id]
-       @game.save
+    if @game.user_id = session[:user_id] && @game.save
         redirect_to games_path
         
     else
+        flash.now[:messages] = @game.errors.full_messages
         render :new
     end
 end

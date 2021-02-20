@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
         redirect_to '/login'
     end
 
-    def google
+    def omniauth
         @user = User.find_or_create_by(username: auth["info"]["name"]) do |user| 
             user.password =  SecureRandom.hex(10)
         end 
@@ -46,8 +46,8 @@ class SessionsController < ApplicationController
      params.require(:user).permit(:username, :password)
     end 
 
-    # def auth
-    #     request.env['omniauth.auth']
-    # end
+    def auth
+        request.env['omniauth.auth']
+    end
 
 end
