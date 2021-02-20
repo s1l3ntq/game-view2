@@ -8,7 +8,13 @@ class Game < ApplicationRecord
     validates :description, presence: true
     validates :platform, presence: true
 
-    scope :recent_games, -> { where('created_at' < 30.days.ago)}
+    #scope :recent_games, -> { where(:created_at => (Time.now -15.days)..Time.now)}
+    #scope :old, -> { where('year_published < ?', 50.years.ago )}
+
+
+    def self.recent_games
+		Game.where(:created_at => (Time.now - 10.days)..Time.now)
+	end
 
 
     def game_name

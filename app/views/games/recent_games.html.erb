@@ -2,5 +2,6 @@
 
 <% @recent_games.each do |game|%>
         <%#<%(game.game_name, game_path(game.id)) %>
-        <%= game.name%>
+        <%=link_to(game.game_name, game_path(game.id))%>
+        <%= game.created_at.to_date%>
                 <% end %>

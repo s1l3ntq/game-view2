@@ -23,7 +23,8 @@
  <%= form_for(@comment) do |f| %>
  <%#<%= f.label "comments" %>
  <%= f.text_area :comment %>
- <%= f.submit %>
+ <%= f.hidden_field :game_id, :value=> 1%>
+ <%= f.submit "Leave Comment" %>
  <% end %> 
 
 <%# <%= render 'comments/form'%>
