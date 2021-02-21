@@ -18,6 +18,7 @@
 
 <% @game.comments.each do |g|%>
 <% user = User.find_by_id(g.user_id)%>
+<%#<%=g.comment.user.username%>
 <%=g.comment%><br>
 <% end %>
 

@@ -9,13 +9,15 @@ class CommentsController < ApplicationController
     
     
     def create
-        @user = User.find_by_id(comment_params[:id])
-        byebug
-        @comment = Comment.new(comment_params)
-        #@comment = @game.comments.build(comments_params)
+        @comment = Comment.new(comments_params)
+        @comment.user = current_user
+        @comment.valid?
+        #raise @comment.errors.inspect
         if @comment.valid?
             @comment.save
             redirect_to game_path(@comment.game_id) #params[:game_id],@comment
+            #@user = User.find_by_id(comment_params[:id])
+            #@comment = @game.comments.build(comments_params)
             # @game = Game.find(comments_params[:game_id]) 
             #@comment.user_id = session[user_id]
             #@comment.game_id = params[:game_id]

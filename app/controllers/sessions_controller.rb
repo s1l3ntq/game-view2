@@ -23,16 +23,16 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete(:user_id)
-        redirect_to '/login'
+        redirect_to '/'
     end
 
-    def omniauth
+    def google
         @user = User.find_or_create_by(username: auth["info"]["name"]) do |user| 
             user.password =  SecureRandom.hex(10)
         end 
         if @user && @user.id
             session[:user_id] = @user.id
-            redirect_to user_path 
+            redirect_to games_path 
         else 
             redirect_to "/login"
         end 
