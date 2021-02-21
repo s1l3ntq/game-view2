@@ -16,11 +16,13 @@
 <br></br>
 <h5>Comments:</h5>
 
-<% @game.comments.each do |g|%>
-<% user = User.find_by_id(g.user_id)%>
-<%#<%=g.comment.user.username%>
-<%=g.comment%><br>
+<% @game.comments.each do |c|%>
+<% if User.find_by(id: c.user_id)%> 
+<%=User.find_by(id: c.user_id).username%> ----:>
+<%=c.comment%><br>
 <% end %>
+<%end%>
+
 
  <%= form_for(@comment) do |f| %>
  <%#<%= f.label "comments" %>
