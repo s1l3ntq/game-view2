@@ -1,5 +1,5 @@
 <h1>Signup</h1>
-<<%#%=render partial: '/errors', locals: {mistake: @user}%>
+<%=render partial: '/errors', locals: {mistake: @user}%>
 <%= form_for @user, url:signup_path do |f| %>
   <div>
     <%= f.label :username %>
@@ -12,10 +12,3 @@
   <%= f.submit "Signup" %>
 <% end %>
 
-<%# <%= form_for(@user, url: login_path) do |f| %>
-    <%# <%= f.label "username:" %> 
-    <%# <%= f.text_field :username %> 
-    <%# <%= f.label "password:" %> 
-    <%# <%= f.password_field :password %> 
-    <%# <%= f.submit "Login" %>
-<%# <% end %> 

@@ -1,6 +1,7 @@
 <%# if mistake.errors%>
     <%# @game%>
-    <% mistake.errors.full_message.each do |e| %>
+    <% mistake.errors.full_messages.each do |e| %>
     <h1> <%= e %> </h1>
         <% end %>
     <%#end%>
+

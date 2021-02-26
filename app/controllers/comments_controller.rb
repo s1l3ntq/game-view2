@@ -14,20 +14,21 @@ class CommentsController < ApplicationController
     
     def create
         # raise params.inspect
+        @game = Game.find_by(id: params[:game_id])
         @comment = Comment.new(comments_params)
         @comment.user = current_user
         @comment.valid?
         if @comment.valid?
             @comment.save
-            redirect_to games_path(@comment) 
+            redirect_to game_comment_path(3, @comment) 
         else
             render :new
         end
     end
 
     def show
-        @game = Game.find(params[:id])
-        @comment = @comment.games.build
+        @game = Game.find(params[:game_id])
+        #@comment = Comment.find(params[:id])
     end
 
     def edit

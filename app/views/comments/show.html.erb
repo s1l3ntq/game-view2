@@ -1,6 +1,6 @@
 <h1>Game Comments</h1>
 
-<% @comments.each do |c|%>
+<% @game.comments.each do |c|%>
     <%#<%= c.comments %>
     
     <% if User.find_by(id: c.user_id)%> 
@@ -11,6 +11,5 @@
     <%= button_to "Delete", comment_path(comment_id), method: "delete" %>
     <%end%>
     
-    <% end %>
     <% end %>
 <% end %>

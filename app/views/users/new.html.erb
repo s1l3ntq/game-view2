@@ -1,5 +1,5 @@
 <H1> Login</H1>
-<%#<%=render partial: '/errors', locals: {mistake: @user}%>
+<%<%=render partial: '/errors', locals: {mistake: @user}%>
 <%= form_tag('/users', method: :post) do %>
   <div>
     <%= label_tag(:username, "Username") %>
@@ -11,12 +11,3 @@
   </div>
   <%= submit_tag("Login") %>
 <% end %>
-
-<%# <%= form_for(@user, url:'/signup') do |f| %>
-<%# <%= f.label "username:" %>
-<%# <%= f.text_field :username %>
-<%# <%= f.label "password:" %> 
-<%# <%= f.password_field :password %>
-
-<%# <%= f.submit %> 
-<%# <% end %> 
