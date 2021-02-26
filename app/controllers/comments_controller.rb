@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
         #raise @comment.errors.inspect
         if @comment.valid?
             @comment.save
-            redirect_to game_path(@comment.game_id) #params[:game_id],@comment
+            redirect_to game_comment_path(@comment) #params[:game_id],@comment #game_path(@comment.game_id)
             #@user = User.find_by_id(comment_params[:id])
             #@comment = @game.comments.build(comments_params)
             # @game = Game.find(comments_params[:game_id]) 
@@ -28,7 +28,8 @@ class CommentsController < ApplicationController
     # if @comment.save
     # redirect_to game_path(@game)
         else
-            redirect_to game_path(@comment.game_id)
+            render :new
+            #redirect_to game_path(@comment.game_id)
         end
     end
 
