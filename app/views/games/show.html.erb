@@ -9,17 +9,27 @@
 <h4>Platform: <%= @game.platform%>
 </h4>
 
+<% if current_user.id == @game.user_id%>
 <%= link_to "delete" , game_path(@game), method: :destroy %>
 
     <%= link_to "edit post" , edit_game_path(@game), method: 'edit' %>
+	
+<% end %>
+
+
 <br></br>
 <br></br>
 <h5>Comments:</h5>
 
 <% @game.comments.each do |c|%>
 <% if User.find_by(id: c.user_id)%> 
-<%=User.find_by(id: c.user_id).username%> ----:>
-<%=c.comment%><br>
+<%=User.find_by(id: c.user_id).username%> ----:><%=c.comment%>
+<% if c.user_id == current_user.id %>
+            <%= comment_id = @game.comments.find_by_id(c.id).id %>
+            <%= hidden_field :comment_id, :value => comment_id %>
+        <%= button_to "Delete", comment_path(comment_id), method: "delete" %>
+        <%end%>
+
 <% end %>
 <%end%>
 

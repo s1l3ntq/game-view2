@@ -9,7 +9,11 @@
 <%# <%= f.file_field :demo %>
 <%= f.label "description:" %>
 <%= f.text_field :description %>
-<%= f.label "platform:" %>
+<h2> Add Platform </h2>
+<%= f.fields_for :game do |p| %>
+    <%= p.label "Platform" %>
+    <%= p.label "name" %>
+<% end %>
 <%= f.text_field :platform %>
 
    

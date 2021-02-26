@@ -41,6 +41,11 @@ class CommentsController < ApplicationController
 
     def destroy
 
+        @comment = Comment.find(params[:id])
+        @game = @comment.game
+        @comment.delete
+        redirect_to game_path(@game)
+
     end
     private
 
