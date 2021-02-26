@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
         @comment.valid?
         if @comment.valid?
             @comment.save
-            redirect_to game_comments_path(@game) 
+            redirect_to games_path(@comment) 
         else
             render :new
         end
