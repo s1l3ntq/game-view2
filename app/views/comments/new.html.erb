@@ -7,10 +7,11 @@
 <%#    <%= f.text_area :comment%>
 <%#    <%= f.submit "Post Comment"%>
 <%#    <% end %>
+#,game_comments_path(@game, @comment)
 
-
- <%= form_for ([@game, @comment]), url:game_comments_path(@game) do |f|%>
+ <%= form_for @comment do |f|%>
     <%#<%= f.label :comment%>
+    <%= f.hidden_field :game_id, value:params[:game_id]%>
     <%= f.text_field :comment%>
     <%= f.submit "Comment"%>
 
