@@ -5,18 +5,10 @@
 <%= form_for(@game) do |f| %>
 <%= f.label "name:" %>
 <%= f.text_field :name %>
-<%# <%= f.label "demo:" %>
-<%# <%= f.file_field :demo %>
 <%= f.label "description:" %>
 <%= f.text_field :description %>
-<h2> Add Platform </h2>
-<%= f.fields_for :game do |p| %>
-    <%= p.label "Platform" %>
-    <%= p.label "name" %>
-<% end %>
+<%= f.label "platform:" %>
 <%= f.text_field :platform %>
-
-   
 <%= f.submit %>
 
 <% end %>
