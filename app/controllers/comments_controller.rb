@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
     before_action :only_logged_in
 
+    def index
+        @comments = Comments.all
+    end
+
     def new
         @game =Game.find(params[:game_id])
         @comment = @game.comments.build
@@ -33,6 +37,11 @@ class CommentsController < ApplicationController
         end
     end
 
+    def show
+        @game = Game.find(params[:id])
+        @comment = @comment.games.build
+    end
+
     def edit
 
     end
@@ -51,7 +60,7 @@ class CommentsController < ApplicationController
     private
 
     def comments_params
-        params.require(:comment).permit(:comment, :game_id, :user_id, game_attributes:[:id]) 
+        params.require(:comment).permit(:comment, :game_id, :user_id ,game_attributes:[:id]) 
     end
 
     # def get_game

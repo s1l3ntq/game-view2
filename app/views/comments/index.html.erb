@@ -1,0 +1,13 @@
+<h1>Game Comments</h1>
+
+<% @comments.each do |c|%>
+    <%#<%= c.comments %>
+    
+    <% if User.find_by(id: c.user_id)%> 
+    <%=User.find_by(id: c.user_id).username%> ----:><%=c.comment%>
+    <% if c.user_id == current_user.id %>
+    <%= comment_id = @game.comments.find_by_id(c.id).id %>
+    <%= hidden_field :comment_id, :value => comment_id %>
+    <% end %>
+    <% end %>
+<% end %>
