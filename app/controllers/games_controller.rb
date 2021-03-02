@@ -19,10 +19,10 @@ def new
 end
 
 def create
-    @game = Game.new(game_params)
-    #byebug
     
-    if @game.user_id = session[:user_id] && @game.save
+    @game = Game.new(game_params)
+    @game.user_id = session[:user_id]
+    if @game.save
         redirect_to games_path
         
     else
@@ -61,7 +61,7 @@ def update
 private 
 
     def game_params
-        params.require(:game).permit(:name, :demo, :description, :platform, :user_id)
+        params.require(:game).permit(:name, :demo, :description, :platform)
 
     end
 
@@ -72,7 +72,7 @@ private
     #       file.write(uploaded_file.read)
     #     end
     # end
-
+#, :user_id
 
 
 end

@@ -1,6 +1,6 @@
-<% if @game.errors.any? %>
-    <%=render partial: '/errors', locals: {mistake: @game}%>
-<% end %>
+<%# if @game.errors.any? %>
+    <%#=render partial: '/errors', locals: {mistake: @game}%>
+<%# end %>
 
 <%= form_for(@game) do |f| %>
 <%= f.label "name:" %>

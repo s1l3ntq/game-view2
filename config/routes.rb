@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   match '/auth/:google_oauth2/callback' => 'sessions#google', via: [:get,:post]
   root to: 'sessions#welcome'
   
-  post '/signup' => 'sessions#create'
+  post '/signup' => 'users#create'
   get '/signup' => 'sessions#new'
   
-  get '/login', to: 'users#new'
+  get '/login', to: 'sessionss#new'
   #post '/login', to: 'users#create'
   get '/logout', to: 'sessions#destroy'
   

@@ -8,19 +8,24 @@ class CommentsController < ApplicationController
     def new
         @game =Game.find(params[:game_id])
         @comment = @game.comments.build
+    
         #(game_id:@game.id) associates right away.
     end
     
     
     def create
-        # raise params.inspect
-        @game = Game.find_by(id: params[:game_id])
+        
+    
+        @game = Game.find(params[:game_id])
+        
         @comment = Comment.new(comments_params)
+        @comment.game = @game
+       
         @comment.user = current_user
-        @comment.valid?
-        if @comment.valid?
-            @comment.save
-            redirect_to game_comment_path(3, @comment) 
+        
+        if @comment.save
+            
+            redirect_to game_comment_path(@game, @comment) 
         else
             render :new
         end
@@ -50,12 +55,12 @@ class CommentsController < ApplicationController
 
     def comments_params
        
-        params.require(:comment).permit(:comment, :game_id, :user_id ,game_attributes:[:id]) 
+        params.require(:comment).permit(:comment) 
     end
 
     # def get_game
     #     @game =Game.find(params[:game_id])
     # end
-
+#, :game_id, :user_id ,game_attributes:[:id]
 
 end

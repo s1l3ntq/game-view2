@@ -3,20 +3,33 @@ class UsersController < ApplicationController
         @user = User.new
     end
     
+    # def create
+    #     @user = User.new(username:params[:username])
+    #         if !@user
+    #         @error = "I'm sorry, that username is incorrect"
+    #         render :new
+    #         elsif !@user.authenticate(params[:password])
+    #         @error =  "Password was Incorrect"
+    #         render :new  
+    #         else 
+    #         session[:user_id] = @user.id
+    #         redirect_to user_path(@user)
+    #         end 
+        
+    # end
+
     def create
-        @user = User.find_by(username:params[:username])
-            if !@user
-            @error = "I'm sorry, that username is incorrect"
-            render :new
-            elsif !@user.authenticate(params[:password])
-            @error =  "Password was Incorrect"
-            render :new  
-            else 
+        @user = User.new(user_params)
+            if @user.save
+            return redirect_to controller: 'users', action: 'new' unless @user.save
             session[:user_id] = @user.id
             redirect_to user_path(@user)
-            end 
-        
+        else
+            flash.now[:error] = @user.errors.full_messages
+            render :new
+        end
     end
+
     
     private
     def user_params
