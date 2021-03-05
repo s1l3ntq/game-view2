@@ -8,15 +8,14 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @user = User.find_by(user_params)
-        if !@user.authenticate(params[:password])
-            @error =  "Password was Incorrect"
-            
-           
-        elsif @user.save
-             session[:user_id] = @user.id 
+        @user = User.new(user_params)
+        if @user.save
+            session[:user_id] = @user.id 
             redirect_to user_path(@user)
-             render :new
+            #  !@user.try(:authenticate, params[:password])
+            # @error =  "Password was Incorrect"
+            
+             
         else
                 @error = @user.errors.full_messages
                 render :signup
@@ -26,14 +25,18 @@ class SessionsController < ApplicationController
 
 
     # def create
-    #     user = User.find_by(username: params[:username])
-    #     user = user.try(:authenticate, params[:password])
-    #     if user
+    #     @user = User.find_by(username: params[:username])
+    #     @user = @user.try(:authenticate, params[:password])
+    #     @user.save
+    #      if
     #         session[:user_id] = user.id
-    #         redirect_to root_path
-    #     else
-    #         flash.now[:error] = ["There was a problem logging in. Please make sure you use the correct username & password."]
+    #         redirect_to user_path(@user)
+    #     elsif
+            
+    #         #@error = ["There was a problem logging in. Please make sure you use the correct username & password."]
     #         render :new
+    #     else
+    #         render :signup
     #     end
     # end
 
